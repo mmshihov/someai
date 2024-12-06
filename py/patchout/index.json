@@ -1,0 +1,25 @@
+{
+    "songs": [
+        { "alias": "MT_DIO_RID_1.5_", "name": "metal-Dio-Rnbw-n-th-drk_1.5x.wav" },
+        { "alias": "MT_DIO_RID_NTRS", "name": "metal-Dio-Rnbw-n-th-drk_intersection.wav" },
+        { "alias": "MT_DIO_RID_0.75", "name": "metal-Dio-Rnbw-n-th-drk_subset-0.75x.wav" },
+        { "alias": "MT_DIO_RID_FULL", "name": "metal-Dio-Rnbw-n-th-drk.wav" },
+        { "alias": "MT_DIO_RID_2.0_", "name": "metal-Dio-Rnbw-n-th-drk_2x.wav" },
+        { "alias": "MT_DIO_RID_0.5_", "name": "metal-Dio-Rnbw-n-th-drk_subset-0.5x.wav" },
+        { "alias": "MT_DIO_RID_SBST", "name": "metal-Dio-Rnbw-n-th-drk_subset.wav" },
+        { "alias": "CL_VVL_SPR_FULL", "name": "vivaldi-spring-20sec.wav" },
+        { "alias": "CR_VVL_STR_FULL", "name": "vivaldi-storm-crok-20sec.wav" },
+        { "alias": "CL_VVL_STR_FULL", "name": "vivaldi-storm-classic-20sec.wav" }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
