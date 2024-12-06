@@ -40,5 +40,7 @@ for item in jo:
             rv['dimension'] = len(vector)
             rv['audio']['embeddings'].append(vector)
 
+        offset = offset + WINDOW_LEN
+
     with open(f"{DATA_PATH}/embeddings/{item['name']}.json", "w") as vectorFile:
         json.dump(rv, vectorFile)
