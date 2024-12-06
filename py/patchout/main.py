@@ -4,10 +4,10 @@ import torchaudio
 import json
 
 MODEL="fsd50k"
-DATA_PATH="/some/path/"
+DATA_PATH="/home/mikhail/py/work/test-data"
 
 
-with open('./data/index.json') as index:
+with open(f"{DATA_PATH}/fnames.json") as index:
     jo = json.load(index)
 
 model = get_basic_model(mode="logits", arch=MODEL) # mode={ "embed_only",  "logits", "all" }
@@ -17,8 +17,10 @@ model = model.cuda()
 
 rv = {'dimension':10, 'vectors':[]}
 
-for item in jo["songs"]:
+for item in jo:
     w, sr = torchaudio.load(f"{DATA_PATH}/audio/{item['name']}")
+    print(w.shape())
+
     if sr != 32000:
         raise Exception("Invalid sample rate!")
 
@@ -31,7 +33,7 @@ for item in jo["songs"]:
 
         vector = logits[0].tolist()
         rv['dimension'] = len(vector)
-        rv['vectors'].append({'alias': item['alias'], 'vector': vector})
+        rv['vectors'].append({'name': item['name'], 'vector': vector})
 
 with open(f'./data/{MODEL}.json', "w") as vectorFile:
     json.dump(rv, vectorFile)
