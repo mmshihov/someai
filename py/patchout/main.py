@@ -18,7 +18,7 @@ model = model.cuda()
 rv = {'dimension':10, 'vectors':[]}
 
 for item in jo:
-    w, sr = torchaudio.load(f"{DATA_PATH}/audio/{item['name']}")
+    w, sr = torchaudio.load(f"{DATA_PATH}/audio-wav/{item['name']}")
     print(w.shape())
 
     if sr != 32000:
@@ -35,5 +35,5 @@ for item in jo:
         rv['dimension'] = len(vector)
         rv['vectors'].append({'name': item['name'], 'vector': vector})
 
-with open(f'./data/{MODEL}.json', "w") as vectorFile:
-    json.dump(rv, vectorFile)
+#with open(f'{DATA_PATH}/embeddings/{MODEL}.json', "w") as vectorFile:
+#    json.dump(rv, vectorFile)
