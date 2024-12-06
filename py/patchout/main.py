@@ -15,25 +15,30 @@ model = get_basic_model(mode="logits", arch=MODEL) # mode={ "embed_only",  "logi
 model.eval()
 model = model.cuda()
 
-rv = {'dimension':10, 'vectors':[]}
-
 for item in jo:
-    w, sr = torchaudio.load(f"{DATA_PATH}/audio-wav/{item['name']}")
-    print(w.shape())
+    w, sr = torchaudio.load(f"{DATA_PATH}/audio-wav/{item['name']}.wav")
+    print("sr=", sr, "length=", w.shape[1])
 
     if sr != 32000:
         raise Exception("Invalid sample rate!")
 
-    w2=w[:,0:320*998] #correrct size
+    audio_len = w.shape[1]
+    offset = 0
+    WINDOW_LEN = 320*998
 
-    with torch.no_grad(): # it can be omitted (just for economy...)
-        audio_wave = w2.cuda()
+    rv = {'dimension':1, 'audio':{ 'name': item['name'], 'embeddings': []}}
 
-        logits=model(audio_wave) # this is embeddings
+    while (offset + WINDOW_LEN < audio_len):
+        w2=w[:,offset:(offset + WINDOW_LEN)] #correrct size
 
-        vector = logits[0].tolist()
-        rv['dimension'] = len(vector)
-        rv['vectors'].append({'name': item['name'], 'vector': vector})
+        with torch.no_grad(): # it can be omitted (just for economy...)
+            audio_wave = w2.cuda()
 
-#with open(f'{DATA_PATH}/embeddings/{MODEL}.json', "w") as vectorFile:
-#    json.dump(rv, vectorFile)
+            logits=model(audio_wave) # this is embeddings
+
+            vector = logits[0].tolist()
+            rv['dimension'] = len(vector)
+            rv['audio']['embeddings'].append(vector)
+
+    with open(f'{DATA_PATH}/embeddings/{item['name']}.json', "w") as vectorFile:
+        json.dump(rv, vectorFile)
