@@ -1,0 +1,2 @@
+# someai
+Some AI tries
