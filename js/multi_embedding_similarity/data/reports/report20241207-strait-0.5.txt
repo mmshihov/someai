@@ -1,0 +1,46 @@
+{
+  "mongo": {
+    "connectionString": "",
+    "db": "SAMC",
+    "collection": "PATCHOUT",
+    "vectorIndex": "PATCHOUT_VECTOR",
+    "vectorDimension": 527,
+    "vectorFieldName": "embedding_vector",
+    "tenantIdFieldName": "tenant_id",
+    "similarity": "cosine",
+    "tenantId": "fsd50k_embeddings_0_5_strait_tenant"
+  },
+  "aim": {
+    "id": "weviate_text2vec-contextionary"
+  }
+}
+
+TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.5
+const LIMIT=5;
+
+
+1: 26_foo01_0_country_d1.wav ->[ d(26_foo01_0_country_o.wav)=0.9748, d(26_foo01_1_country_o.wav)=0.7053 ]
+1: 26_foo01_0_country_d2.wav ->[ d(26_foo01_0_country_o.wav)=0.9739, d(26_foo01_1_country_o.wav)=0.3519 ]
+1: 28_foo03_0_jazz_d1.wav ->[ d(28_foo03_0_jazz_o.wav)=0.9664, d(nol_lenin.wav)=0.1645, d(energetic_rockabilly_instrumental_track_253093.wav)=0.1642, d(26_foo01_1_country_o.wav)=0.0879 ]
+1: 28_foo03_0_jazz_d2.wav ->[ d(28_foo03_0_jazz_o.wav)=0.9711 ]
+1: 37_its_a_rainy_day_d1.wav ->[ d(37_its_a_rainy_day_o.wav)=0.9518, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.0860 ]
+1: 37_its_a_rainy_day_d2.wav ->[ d(37_its_a_rainy_day_o.wav)=0.8596, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.1688, d(mylene_farmer_appelle_mon_numero.wav)=0.0850, d(rap_german_o.wav)=0.0844 ]
+1: aleksandr_pushnojj_pesenka_odnojj_gjorly_d1.wav ->[ d(aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav)=0.9496, d(26_foo01_1_country_o.wav)=0.4275, d(chajjf_oranzhevoe_nastroenie.wav)=0.3407, d(26_foo01_0_country_o.wav)=0.2562, d(aleksandr_pushnojj_nevezukha_netu_slukha.wav)=0.1703, d(rap_german_o.wav)=0.0860, d(german_was_wollen_wir_trinken_rock.wav)=0.0855, d(nirvana_lithium.wav)=0.0850, d(sektor_gaza_opyat_segodnya.wav)=0.0840 ]
+1: aura_dione_amp_rock_mafia_friends_d1.wav ->[ d(aura_dione_amp_rock_mafia_friends_o.wav)=0.8002, d(abba_gimme_gimme_gimme_a_man_after_midnight.wav)=0.1739, d(enigma_principles_of_lust.wav)=0.1723, d(28_foo03_0_jazz_o.wav)=0.0880 ]
+1: aura_dione_amp_rock_mafia_friends_d2.wav ->[ d(aura_dione_amp_rock_mafia_friends_o.wav)=0.8821, d(rap_german_o.wav)=0.1723, d(enigma_principles_of_lust.wav)=0.1712, d(26_foo01_0_country_o.wav)=0.0878, d(28_foo03_0_jazz_o.wav)=0.0874, d(abba_gimme_gimme_gimme_a_man_after_midnight.wav)=0.0845 ]
+1: chajjf_argentina_jamajjka_5_0_d1.wav ->[ d(chajjf_argentina_jamajjka_5_0_o.wav)=0.9592, d(26_foo01_1_country_o.wav)=0.7003, d(26_foo01_0_country_o.wav)=0.3499, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.0866 ]
+1: jurijj_vizbor_milaja_moja_d1.wav ->[ d(jurijj_vizbor_milaja_moja_o.wav)=0.9723, d(26_foo01_0_country_o.wav)=0.1752, d(26_foo01_1_country_o.wav)=0.0871 ]
+1: jurijj_vizbor_milaja_moja_d2.wav ->[ d(jurijj_vizbor_milaja_moja_o.wav)=0.9745 ]
+1: lolita_last_day_d1.wav ->[ d(lolita_last_day_o.wav)=0.7916, d(26_foo01_0_country_o.wav)=0.5243, d(26_foo01_1_country_o.wav)=0.4387, d(28_foo03_0_jazz_o.wav)=0.1738, d(chajjf_argentina_jamajjka_5_0_o.wav)=0.0870 ]
+1: rap_german_d1.wav ->[ d(rap_german_o.wav)=0.9683, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.4344 ]
+1: rap_german_d2.wav ->[ d(rap_german_o.wav)=0.9734, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.3516, d(26_foo01_0_country_o.wav)=0.0872, d(rap_noggano_be_good_o.wav)=0.0868, d(lolita_last_day_o.wav)=0.0866, d(26_foo01_1_country_o.wav)=0.0864 ]
+1: rap_noggano_be_good_d1.wav ->[ d(rap_noggano_be_good_o.wav)=0.9614, d(rap_german_o.wav)=0.4356 ]
+1: rap_noggano_be_good_d2.wav ->[ d(rap_noggano_be_good_o.wav)=0.9650, d(rap_german_o.wav)=0.4366 ]
+
+0: aleksandr_pushnojj_valenki_d1.wav ->[ d(rap_german_o.wav)=0.5767, d(aleksandr_pushnojj_valenki_o.wav)=0.4128, d(prodigy_breathe.wav)=0.4118, d(mylene_farmer_pourvu_quelles.wav)=0.2469, d(dark_synthwave_spectral_251688.wav)=0.1667, d(blood_group_karas.wav)=0.1667, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.0843, d(lolita_last_day_o.wav)=0.0828, d(mylene_farmer_appelle_mon_numero.wav)=0.0816, d(28_foo03_0_jazz_o.wav)=0.0814, d(rap_noggano_be_good_o.wav)=0.0805 ]
+0: chajjf_argentina_jamajjka_5_0_d2.wav ->[ d(26_foo01_0_country_o.wav)=0.8713, d(26_foo01_1_country_o.wav)=0.4349, d(chajjf_argentina_jamajjka_5_0_o.wav)=0.3487, d(abba_gimme_gimme_gimme_a_man_after_midnight.wav)=0.0869, d(circle_in_the_sand.wav)=0.0866, d(lolita_last_day_o.wav)=0.0855 ]
+0: chajjf_dom_vverkh_dnom_d1.wav ->[ d(26_foo01_1_country_o.wav)=0.8797, d(chajjf_dom_vverkh_dnom_o.wav)=0.4383, d(26_foo01_0_country_o.wav)=0.3495, d(chajjf_argentina_jamajjka_5_0_o.wav)=0.2639, d(aleksandr_pushnojj_nevezukha_netu_slukha.wav)=0.1751, d(chajjf_oranzhevoe_nastroenie.wav)=0.0874 ]
+0: chajjf_dom_vverkh_dnom_d2.wav ->[ d(26_foo01_1_country_o.wav)=0.9656, d(chajjf_oranzhevoe_nastroenie.wav)=0.4382, d(26_foo01_0_country_o.wav)=0.2610, d(chajjf_dom_vverkh_dnom_o.wav)=0.0874, d(chajjf_argentina_jamajjka_5_0_o.wav)=0.0868 ]
+0: korol_i_shut_mariya_d1.wav ->[ d(sektor_gaza_opyat_segodnya.wav)=0.5533, d(aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav)=0.4352, d(blood_group_in_german.wav)=0.3696, d(nirvana_lithium.wav)=0.3595, d(nol_lenin.wav)=0.2700, d(korol_i_shut_mariya_o.wav)=0.2616, d(chajjf_oranzhevoe_nastroenie.wav)=0.0936, d(german_was_wollen_wir_trinken_rock.wav)=0.0934, d(nirvana_rape_me_cover.wav)=0.0930, d(chajjf_argentina_jamajjka_5_0_o.wav)=0.0900, d(alizee_la_isla_bonita.wav)=0.0847 ]
+
+Total guess:fail = 17:5

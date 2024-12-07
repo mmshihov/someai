@@ -1,0 +1,4 @@
+js/multi_embedding_similarity/data/embeddings/*
+js/multi_embedding_similarity/config.json
+**/node_modules/**
+js/multi_embedding_similarity/package.json
