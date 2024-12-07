@@ -6,6 +6,8 @@ import json
 MODEL="fsd50k"
 DATA_PATH="/home/mikhail/py/work/test-data"
 
+TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.5
+
 
 with open(f"{DATA_PATH}/fnames.json") as index:
     jo = json.load(index)
@@ -22,11 +24,14 @@ for item in jo:
     if sr != 32000:
         raise Exception("Invalid sample rate!")
 
+
     audio_len = w.shape[1]
     offset = 0
-    WINDOW_LEN = 320*998
 
-    rv = {'dimension':1, 'audio':{ 'name': item['name'], 'embeddings': []}}
+    WINDOW_LEN = 320*998
+    STRIDE = round(WINDOW_LEN * TIME_STRIDE_PERCENT_OF_WINDOW_LEN)
+
+    rv = {'dimension':1, 'audio':{ 'name': item['name'], 'embeddings': []}, 'win_len':WINDOW_LEN, 'stride': STRIDE, 'model': MODEL}
 
     while (offset + WINDOW_LEN < audio_len):
         w2=w[:,offset:(offset + WINDOW_LEN)] #correrct size
@@ -40,7 +45,7 @@ for item in jo:
             rv['dimension'] = len(vector)
             rv['audio']['embeddings'].append(vector)
 
-        offset = offset + WINDOW_LEN
+        offset = offset + STRIDE
 
     with open(f"{DATA_PATH}/embeddings/{item['name']}.json", "w") as vectorFile:
         json.dump(rv, vectorFile)
