@@ -208,7 +208,9 @@ def prepareData(audios, audioMap, originalNames, positiveGroups, negativeGroups)
     # для каждого оригинала посчитать сходство со всеми остальными аудио
     i = 0
     matrix = []
-    audioNames = audioMap.keys()
+    audioNames = list(audioMap.keys())
+
+    print(audioNames)
 
     while (i < len(audioNames)):
         if (not (audioNames[i] in originalNames)):
@@ -291,10 +293,10 @@ for item in jo:
         embLen += 1
         offset = offset + STRIDE
 
-    print("Song processing: ", item['name'], "len(embeddings)=", )
+    print("Song processing: ", item['name'], "len(embeddings)=", embLen)
 
     audios.append(rv) # array of audio vectors
     audioMap[item['name']] = len(audios) - 1
 
-    prepareData(audios, audioMap, ORIGINAL_NAMES, SIMILAR_GROUPS, NONSIMILAR_GROUPS)
+prepareData(audios, audioMap, ORIGINAL_NAMES, SIMILAR_GROUPS, NONSIMILAR_GROUPS)
 
