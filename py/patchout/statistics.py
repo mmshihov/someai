@@ -9,7 +9,7 @@ DATA_PATH="/home/mikhail/py/work/test-data"
 
 TIME_STRIDE_PERCENT_OF_WINDOW_LEN=1
 
-COS_SIM = torch.nn.CosineSimilarity(dim=1)
+COS_SIM = torch.nn.CosineSimilarity(dim=0)
 
 ORIGINAL_NAMES= [
     "26_foo01_0_country_o.wav",
@@ -177,7 +177,7 @@ def computeGroupsSimilarities(audios, audioMap, groups):
 
                 kIndex = audioMap[groups[i][k]]
                 s = computeAudioSimilarity(audios[kIndex], audios[jIndex])
-                sims.append()
+                sims.append(s)
 
                 k += 1
 
@@ -289,8 +289,6 @@ for item in jo:
 
             vector = logits[0]
             
-            print("vector=", vector)
-
             rv['embeddings'].append(vector)
 
         embLen += 1
