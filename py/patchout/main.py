@@ -17,6 +17,9 @@ model = get_basic_model(mode="logits", arch=MODEL) # mode={ "embed_only",  "logi
 model.eval()
 model = model.cuda()
 
+
+rvs = []
+
 for item in jo:
     w, sr = torchaudio.load(f"{DATA_PATH}/audio-wav/{item['name']}.wav")
     print("sr=", sr, "length=", w.shape[1])
@@ -48,7 +51,7 @@ for item in jo:
             rv['audio']['embeddings'].append(vector)
 
         offset = offset + STRIDE
-        break
 
     with open(f"{DATA_PATH}/embeddings/{item['name']}.json", "w") as vectorFile:
         json.dump(rv, vectorFile)
+    
