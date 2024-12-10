@@ -287,7 +287,10 @@ for item in jo:
 
             logits=model(audio_wave) # this is embeddings
 
-            vector = logits[0].tolist()
+            vector = logits[0]
+            
+            print("vector=", vector)
+
             rv['embeddings'].append(vector)
 
         embLen += 1
