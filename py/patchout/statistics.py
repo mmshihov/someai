@@ -7,7 +7,7 @@ import json
 MODEL="fsd50k"
 DATA_PATH="/home/mikhail/py/work/test-data"
 
-TIME_STRIDE_PERCENT_OF_WINDOW_LEN=1
+TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.9
 
 COS_SIM = torch.nn.CosineSimilarity(dim=0)
 
@@ -246,6 +246,7 @@ def prepareData(audios, audioMap, originalNames, positiveGroups, negativeGroups)
         if (percent > bestPercent):
             bestPercent = percent
             bestThreshold = threshold
+            print("thteshold=", bestThreshold, "percent=", bestPercent)
 
     savePercents(bestPercent, bestThreshold)
         
