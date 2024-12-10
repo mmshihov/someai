@@ -11,11 +11,13 @@ TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.9
 
 COS_SIM = torch.nn.CosineSimilarity(dim=0)
 
+#"aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav",
+
 ORIGINAL_NAMES= [
     "26_foo01_0_country_o.wav",
     "28_foo03_0_jazz_o.wav",
     "37_its_a_rainy_day_o.wav",
-    "aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav",
+    "rap_german_o.wav",
     "aleksandr_pushnojj_valenki_o.wav",
     "aura_dione_amp_rock_mafia_friends_o.wav",
     "chajjf_argentina_jamajjka_5_0_o.wav",
@@ -140,7 +142,7 @@ NONSIMILAR_GROUPS = [
 def similarity(x, y):
     return (COS_SIM(x, y) + 1)/2
 
-## считаем среднее симилярити
+## считаем среднее по фрагменту симилярити
 #def computeAudioSimilarity(x, y):
 #    embLen = min(len(x["embeddings"]), len(y["embeddings"]))
 #    i = 0
@@ -171,8 +173,6 @@ def computeAudioSimilarity(x, y):
 
     sim = similarity(xt, yt)
 
-    print("AudioSim(", x["name"], ", ", y["name"], ") = ", sim, xt.shape)
-
     return sim
 
 def computeGroupsSimilarities(audios, audioMap, groups):
@@ -201,7 +201,25 @@ def computeGroupsSimilarities(audios, audioMap, groups):
     return sims
 
 def saveMatrix(matrix, originalNames): 
-    pass
+    f = open(f"{DATA_PATH}/data.css", "w")
+
+    s = "names"
+    for on in originalNames:
+        s += f",{on}"
+    s += "\n"
+    f.write(s)
+
+    for item in matrix:
+        s = item["name"]
+
+        for sim in item["similarities"]:
+            s += f",{sim}"
+
+        s += "\n"
+        f.write(s)
+
+    f.close()
+
 
 def savePercents(bestPercent, bestThreshold):
     pass
