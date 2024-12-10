@@ -37,10 +37,7 @@ SIMILAR_GROUPS = [
         "28_foo03_0_jazz_d1.wav",
         "28_foo03_0_jazz_d2.wav",
         "28_foo03_0_jazz_o.wav",
-    ], [
-        "37_its_a_rainy_day_d1.wav",
-        "37_its_a_rainy_day_d2.wav",
-        "37_its_a_rainy_day_o.wav",
+        "28_foo03_1_jazz_o.wav",
     ], [
         "jurijj_vizbor_milaja_moja_d1.wav",
         "jurijj_vizbor_milaja_moja_d2.wav",
@@ -74,17 +71,16 @@ SIMILAR_GROUPS = [
         "aura_dione_amp_rock_mafia_friends_d1.wav",
         "aura_dione_amp_rock_mafia_friends_d2.wav",
         "aura_dione_amp_rock_mafia_friends_o.wav",
-    ], 
-#    [
-#        "38_slave_on_line_d1.wav",
-#        "38_slave_on_line_d2.wav",
-#        "38_slave_on_line_d3.wav",
-#        "38_slave_on_line_o.wav",
-#    ], [
-#        "37_its_a_rainy_day_d1.wav",
-#        "37_its_a_rainy_day_d2.wav",
-#        "37_its_a_rainy_day_o.wav",
-#    ]  
+    ], [
+        "38_slave_on_line_d1.wav",
+        "38_slave_on_line_d2.wav",
+        "38_slave_on_line_d3.wav",
+        "38_slave_on_line_o.wav",
+    ], [
+        "37_its_a_rainy_day_d1.wav",
+        "37_its_a_rainy_day_d2.wav",
+        "37_its_a_rainy_day_o.wav",
+    ]  
 ]
 
 NONSIMILAR_GROUPS = [
@@ -144,24 +140,40 @@ NONSIMILAR_GROUPS = [
 def similarity(x, y):
     return (COS_SIM(x, y) + 1)/2
 
-# считаем среднее симилярити
+## считаем среднее симилярити
+#def computeAudioSimilarity(x, y):
+#    embLen = min(len(x["embeddings"]), len(y["embeddings"]))
+#    i = 0
+#    simSum = 0
+#
+#    while (i < embLen):
+#        simSum += similarity(x["embeddings"][i], y["embeddings"][i])
+#        i = i + 1
+#    
+#    print("AudioSim(", x["name"], ", ", y["name"], ") = ", simSum / embLen)
+#
+#    return simSum / embLen
+
+## считаем симилярити склеенного вектора
 def computeAudioSimilarity(x, y):
     embLen = min(len(x["embeddings"]), len(y["embeddings"]))
     i = 0
-    simSum = 0
 
+    xlist = []
+    ylist = []
     while (i < embLen):
-        simSum += similarity(x["embeddings"][i], y["embeddings"][i])
+        xlist.append(x["embeddings"][i])
+        ylist.append(y["embeddings"][i])
         i = i + 1
     
-    print("AudioSim(", x["name"], ", ", y["name"], ") = ", simSum / embLen)
+    xt = torch.cat(xlist)
+    yt = torch.cat(ylist)
 
-    return simSum / embLen
+    sim = similarity(xt, yt)
 
-## считаем симилярити склеенного вектора
-#def computeSimilarity(x, y):
-#    embLen = min(len(x["embeddings"]), len(y["embeddings"]))
-#    return similarity()
+    print("AudioSim(", x["name"], ", ", y["name"], ") = ", sim, xt.shape)
+
+    return sim
 
 def computeGroupsSimilarities(audios, audioMap, groups):
     i = 0
@@ -184,6 +196,7 @@ def computeGroupsSimilarities(audios, audioMap, groups):
             j += 1
 
         i += 1
+
     sims.sort()
     return sims
 
@@ -246,7 +259,8 @@ def prepareData(audios, audioMap, originalNames, positiveGroups, negativeGroups)
         if (percent > bestPercent):
             bestPercent = percent
             bestThreshold = threshold
-            print("thteshold=", bestThreshold, "percent=", bestPercent)
+            
+    print("thteshold=", bestThreshold, "percent=", bestPercent)
 
     savePercents(bestPercent, bestThreshold)
         
