@@ -6,7 +6,7 @@ import json
 MODEL="fsd50k"
 DATA_PATH="/home/mikhail/py/work/test-data"
 
-TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.5
+TIME_STRIDE_PERCENT_OF_WINDOW_LEN=1
 
 
 with open(f"{DATA_PATH}/fnames.json") as index:

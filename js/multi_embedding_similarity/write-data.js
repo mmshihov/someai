@@ -10,7 +10,7 @@ const fnames = require("./data/fnames.json");
 const TENANT_NAME = config.mongo.tenantId;
 
 
-async function saveItem(vector, alias, tenantId) {
+async function saveItem(vector, vectorIndex, alias, tenantId) {
     info("aimsSet(%o, %s, %s)", vector, alias, tenantId);
 
     const client = new MongoClient(config.mongo.connectionString);
@@ -19,7 +19,8 @@ async function saveItem(vector, alias, tenantId) {
     const collection = database.collection(config.mongo.collection);
     
     let doc = { 
-      alias,      
+      alias,     
+      vectorIndex, 
       [config.mongo.tenantIdFieldName]: tenantId,
       [config.mongo.vectorFieldName]: vector
     };
@@ -40,13 +41,14 @@ async function main() {
   for (let f of fnames) {
     if (f.type === "original") {
 
-      let embIndex = 0;
+      let vectorIndex = 0;
       const embeddings = require(`./data/embeddings/${f.name}.json`);
       for (let e of embeddings.audio.embeddings) {
 
-        console.log("fname:", embeddings.audio.name, "embedding[", embIndex, "]")
-        embIndex++;
-        await saveItem(e, embeddings.audio.name, TENANT_NAME);
+        console.log("fname:", embeddings.audio.name, "embedding[", vectorIndex, "]")
+        await saveItem(e, vectorIndex, embeddings.audio.name, TENANT_NAME);
+
+        vectorIndex++;
       }
 
       info("Timeout...");
