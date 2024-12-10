@@ -18,6 +18,7 @@
 }
 
 
+
 1: 26_foo01_0_country_d1.wav ->[ d(26_foo01_0_country_o.wav)=0.9693, d(26_foo01_1_country_o.wav)=0.9617, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.1609, d(nirvana_rape_me_cover.wav)=0.1574 ]
 1: 26_foo01_0_country_d2.wav ->[ d(26_foo01_0_country_o.wav)=0.9703, d(26_foo01_1_country_o.wav)=0.9566 ]
 1: 28_foo03_0_jazz_d1.wav ->[ d(28_foo03_0_jazz_o.wav)=0.9675, d(26_foo01_1_country_o.wav)=0.1602, d(aura_dione_amp_rock_mafia_friends_o.wav)=0.1596, d(26_foo01_0_country_o.wav)=0.1568, d(energetic_rockabilly_instrumental_track_253093.wav)=0.1501, d(nol_lenin.wav)=0.1497 ]

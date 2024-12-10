@@ -41,11 +41,14 @@ for item in jo:
 
             logits=model(audio_wave) # this is embeddings
 
+            print("logits.shape=", logits.shape)
+
             vector = logits[0].tolist()
             rv['dimension'] = len(vector)
             rv['audio']['embeddings'].append(vector)
 
         offset = offset + STRIDE
+        break
 
     with open(f"{DATA_PATH}/embeddings/{item['name']}.json", "w") as vectorFile:
         json.dump(rv, vectorFile)
