@@ -89,10 +89,10 @@
   {"name": "side_chick_158056.wav", "type":"original"},
   {"name": "skull_duggrey_ni_ni_ni.wav", "type":"original"},
   {"name": "wagner_flying_holland.wav", "type":"original"},
-  {"name": "zivert_love.wav", "type":"original"}
+  {"name": "zivert_love.wav", "type":"original"},
   
   
   {"name": "aleksandr_pushnojj_nevezukha_netu_slukha.wav", "type":"original"},
   {"name": "aleksandr_pushnojj_pesenka_odnojj_gjorly_d1.wav", "type":"diffusion", "original": "aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav"},
-  {"name": "aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav", "type":"original"},
+  {"name": "aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav", "type":"original"}
 ]
