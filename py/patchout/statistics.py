@@ -211,7 +211,8 @@ def saveMatrix(matrix, originalNames):
         s = item["name"]
 
         for sim in item["similarities"]:
-            s += f",{sim}"
+            percent = sim*100
+            s += f",{percent:.1f}"
 
         s += "\n"
         f.write(s)
