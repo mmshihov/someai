@@ -11,8 +11,6 @@ TIME_STRIDE_PERCENT_OF_WINDOW_LEN=0.9
 
 COS_SIM = torch.nn.CosineSimilarity(dim=0)
 
-#"aleksandr_pushnojj_pesenka_odnojj_gjorly_o.wav",
-
 ORIGINAL_NAMES= [
     "26_foo01_0_country_o.wav",
     "28_foo03_0_jazz_o.wav",
@@ -142,38 +140,38 @@ NONSIMILAR_GROUPS = [
 def similarity(x, y):
     return (COS_SIM(x, y) + 1)/2
 
-## считаем среднее по фрагменту симилярити
-#def computeAudioSimilarity(x, y):
-#    embLen = min(len(x["embeddings"]), len(y["embeddings"]))
-#    i = 0
-#    simSum = 0
-#
-#    while (i < embLen):
-#        simSum += similarity(x["embeddings"][i], y["embeddings"][i])
-#        i = i + 1
-#    
-#    print("AudioSim(", x["name"], ", ", y["name"], ") = ", simSum / embLen)
-#
-#    return simSum / embLen
-
-## считаем симилярити склеенного вектора
+# считаем среднее по фрагменту симилярити
 def computeAudioSimilarity(x, y):
     embLen = min(len(x["embeddings"]), len(y["embeddings"]))
     i = 0
+    simSum = 0
 
-    xlist = []
-    ylist = []
     while (i < embLen):
-        xlist.append(x["embeddings"][i])
-        ylist.append(y["embeddings"][i])
+        simSum += similarity(x["embeddings"][i], y["embeddings"][i])
         i = i + 1
     
-    xt = torch.cat(xlist)
-    yt = torch.cat(ylist)
+    print("AudioSim(", x["name"], ", ", y["name"], ") = ", simSum / embLen)
 
-    sim = similarity(xt, yt)
+    return simSum / embLen
 
-    return sim
+## считаем симилярити склеенного вектора
+#def computeAudioSimilarity(x, y):
+#    embLen = min(len(x["embeddings"]), len(y["embeddings"]))
+#    i = 0
+#
+#    xlist = []
+#    ylist = []
+#    while (i < embLen):
+#        xlist.append(x["embeddings"][i])
+#        ylist.append(y["embeddings"][i])
+#        i = i + 1
+#    
+#    xt = torch.cat(xlist)
+#    yt = torch.cat(ylist)
+#
+#    sim = similarity(xt, yt)
+#
+#    return sim
 
 def computeGroupsSimilarities(audios, audioMap, groups):
     i = 0
