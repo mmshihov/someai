@@ -16,17 +16,17 @@ COS_SIM = torch.nn.CosineSimilarity(dim=0)
 ORIGINAL_NAMES= [
     "26_foo01_0_country_o.wav",
     "28_foo03_0_jazz_o.wav",
-    "37_its_a_rainy_day_o.wav",
-    "rap_german_o.wav",
-    "aleksandr_pushnojj_valenki_o.wav",
-    "aura_dione_amp_rock_mafia_friends_o.wav",
-    "chajjf_argentina_jamajjka_5_0_o.wav",
-    "chajjf_dom_vverkh_dnom_o.wav",
     "jurijj_vizbor_milaja_moja_o.wav",
-    "korol_i_shut_mariya_o.wav",
-    "lolita_last_day_o.wav",
     "rap_german_o.wav",
     "rap_noggano_be_good_o.wav",
+    "korol_i_shut_mariya_o.wav",
+    "aleksandr_pushnojj_valenki_o.wav",
+    "lolita_last_day_o.wav",
+    "chajjf_argentina_jamajjka_5_0_o.wav",
+    "chajjf_dom_vverkh_dnom_o.wav",
+    "aura_dione_amp_rock_mafia_friends_o.wav",
+    "37_its_a_rainy_day_o.wav",
+    "38_slave_on_line_o.wav",
 ]
 
 SIMILAR_GROUPS = [
