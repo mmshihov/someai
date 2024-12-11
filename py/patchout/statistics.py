@@ -277,7 +277,7 @@ def prepareData(audios, audioMap, originalNames, positiveGroups, negativeGroups)
             bestPercent = percent
             bestThreshold = threshold
             
-    print("thteshold=", bestThreshold, "percent=", bestPercent)
+    print("threshold=", bestThreshold, "percent=", bestPercent)
 
     savePercents(bestPercent, bestThreshold)
         
